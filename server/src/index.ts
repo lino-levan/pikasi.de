@@ -20,12 +20,18 @@ const httpServer = https ? createServer({
 const io = https ? new Server(httpServer, options) : new Server(options);
 
 const sides = [
-  ["As a child, Jack identified more with his mother.", "As a child, Ken identified more with his father."],
+  ["As a child, Jack identified more with his mother.", "As a child, Jack identified more with his father."],
   ["The best origami animal is the Water Buffalo", "The best origami animal is the Tiger"],
   ["Jack is mostly a good person", "Jack is mostly a bad person"],
-  ["This short story made me cry", "This short story did not make me cry (I have no emotions)"],
   ["The central theme of \"The Paper Menagerie\" is culture", "The central theme of \"The Paper Menagerie\" is identity"],
   ["By the end of the story, Jack has learned the importance of family", "By the end of the story, Jack has not learned the importance of family"],
+  ["The following phrase is discriminatory: \"Make yourselves at home. My wife doesn’t speak much English, so don’t think she’s being rude for not talking to you.\"", "The following phrase is helpful: \"Make yourselves at home. My wife doesn’t speak much English, so don’t think she’s being rude for not talking to you.\""],
+  ["Jack became more American because of bullying and indoctrination", "Jack became more American because he had a weak mindset"],
+  ["Mark is racist and sinophobic", "Mark is a product of the culture of the mid 1980s"],
+  ["Jack's mother was in the right for not trying to worry her family", "Jack's mother was in the wrong for downplaying her symptoms"],
+  ["Jack's mother was actually happy to be in Connecticut", "Jack's mother was not happy being in Connecticut"],
+  ["If I read Jack's mother's letter, I would be mad at Jack for his behavior", "If I read Jack's mother's letter, I would give my condolences to Jack"],
+  ["This short story made me cry", "This short story did not make me cry (I have no emotions)"],
 ]
 
 let games: Record<string, {
