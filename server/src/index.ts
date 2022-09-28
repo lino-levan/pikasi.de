@@ -1,10 +1,23 @@
 import { Server } from "socket.io";
+import { createServer } from "https";
+import { readFileSync } from "fs";
+import * as dotenv from 'dotenv';
+dotenv.config()
 
-const io = new Server({
+const https = process.env?.CERT
+
+const options = {
   cors: {
     origin: '*'
   }
-});
+}
+
+const httpServer = https ? createServer({
+  key: readFileSync(process.env.KEY),
+  cert: readFileSync(process.env.CERT)
+}) : null
+
+const io = https ? new Server(httpServer, options) : new Server(options);
 
 const sides = [
   ["As a child, Jack identified more with his mother.", "As a child, Ken identified more with his father."],
@@ -110,5 +123,10 @@ io.on("connection", (socket) => {
   })
 })
 
-console.log("Listening!")
-io.listen(14513)
+if(https) {
+  console.log("Listening securely!")
+  httpServer.listen(14513)
+} else {
+  console.log("Listening insecurely!")
+  io.listen(14513)
+}
