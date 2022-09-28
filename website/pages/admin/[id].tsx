@@ -75,7 +75,7 @@ const Admin: NextPage = () => {
         {
           screen === "game" &&
           <>
-            <div className='w-full h-full grid grid-cols-2'>
+            <div className='w-full h-full grid gap-8 grid-cols-2'>
               <div className="flex flex-col justify-center items-center text-center">
                 <h1 className='text-5xl'>⬅️</h1>
                 <h1 className='text-3xl'>{side[0]}</h1>
